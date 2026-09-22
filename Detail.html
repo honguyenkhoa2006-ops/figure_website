@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Figure & Friends</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Kiểm tra ngay lập tức trước khi trang được render
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.add('light-mode');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="gundam-lineart-wrapper">
+        <img src="gundam-lineart.png" alt="Gundam Lineart" class="gundam-img">
+        <div class="scanning-light"></div>
+    </div>
+    <!-- Header & Nav -->
+    <header>
+        <div class="nav-container">
+            <a href="Home.html" class="logo">
+                <img src="Logo.png"></img> Figure & Friends
+            </a>
+
+            <div class="search-bar">
+                <i class="bi bi-search"></i>
+                <input type="text" placeholder="Tìm kiếm sản phẩm, nhà sản xuất,...">
+            </div>
+
+            <div class="nav-actions">
+                <!-- Nút chuyển đổi Sáng / Tối -->
+                <button id="theme-toggle" class="theme-btn" title="Chuyển đổi giao diện">
+                    <i class="bi bi-moon-stars-fill" id="theme-icon"></i>
+                </button>
+
+                <!-- Khu vực Tài khoản có Dropdown -->
+                <div class="account-dropdown">
+                    <a href="javascript:void(0);" id="account-btn" class="account-toggle">
+                        <i class="bi bi-person-circle"></i> <span id="account-text">Tài khoản</span> <i class="bi bi-chevron-down"></i>
+                    </a>
+                    
+                    <!-- Hộp menu thả xuống (Mặc định sẽ ẩn đi) -->
+                    <div class="dropdown-content" id="dropdown-box">
+                        <!-- TRƯỜNG HỢP 1: Chưa đăng nhập -->
+                        <div id="guest-menu">
+                            <a href="Login.html"><i class="bi bi-box-arrow-in-right"></i> Đăng nhập</a>
+                            <a href="Register.html"><i class="bi bi-person-plus"></i> Đăng ký</a>
+                        </div>
+                        
+                        <!-- TRƯỜNG HỢP 2: Đã đăng nhập -->
+                        <div id="user-menu" style="display: none;">
+                            <a href="profile.html"><i class="bi bi-person-badge"></i> Trang cá nhân</a>
+                            <a href="#" id="logout-btn"><i class="bi bi-box-arrow-right"></i> Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#">
+                    <i class="bi bi-cart3"></i> Giỏ hàng
+                    <span class="badge"></span>
+                </a>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Menu -->
+    <section class="menu">
+        <div class="menu-banner">
+            <div class="selection">
+                <a href="Home.html" class="selection-item"><i class="bi bi-house-fill"></i>Home</a>
+                <a href="Shop.html" class="selection-item"><i class="bi bi-bag-fill"></i>Shop</a>
+                <a href="Blog.html" class="selection-item"><i class="bi bi-card-text"></i>Blog</a>
+                <a href="Tutorial.html" class="selection-item"><i class="bi bi-tools"></i>Tutorial</a>
+                <a href="AboutUs.html" class="selection-item"><i class="bi bi-person-fill"></i>About Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT: CHI TIẾT SẢN PHẨM -->
+    <main class="detail-wrapper">
+        
+        <!-- Đường dẫn điều hướng (Breadcrumb) -->
+        <div class="breadcrumb">
+            <a href="Home.html">Trang chủ</a> / <a href="Shop.html">Cửa hàng</a> / <span>Chi tiết sản phẩm</span>
+        </div>
+
+        <!-- Khung chính chi tiết sản phẩm (Chia 2 cột: Ảnh bên trái, Thông tin bên phải) -->
+        <div class="product-detail-container">
+            
+            <!-- CỘT TRÁI: HỆ THỐNG ẢNH & NHIỀU GÓC CHỤP -->
+            <div class="product-gallery">
+                <!-- Ảnh lớn hiển thị chính -->
+                <div class="main-img-box">
+                    <div class="placeholder-main-img"><i class="bi bi-robot"></i></div>
+                    <span class="badge-status in-stock">Sẵn hàng</span>
+                </div>
+                <!-- Danh sách ảnh thu nhỏ (Thumbnails) nhiều góc chụp khác nhau -->
+                <div class="thumbnail-list">
+                    <div class="thumb-item active"><i class="bi bi-robot"></i></div>
+                    <div class="thumb-item"><i class="bi bi-shield-shaded"></i></div>
+                    <div class="thumb-item"><i class="bi bi-cpu"></i></div>
+                    <div class="thumb-item"><i class="bi bi-stars"></i></div>
+                </div>
+            </div>
+
+            <!-- CỘT PHẢI: THÔNG TIN CHI TIẾT & ĐẶT HÀNG -->
+            <div class="product-details-info">
+                <span class="detail-brand">BANDAI (Phân khúc: RG / Real Grade)</span>
+                <h1 class="detail-name">RG Gundam Epyon (MS-00) - Phiên bản kỷ niệm</h1>
+                
+                <div class="detail-price-box">
+                    <span class="current-price">1.150.000 đ</span>
+                    <span class="old-price">1.350.000 đ</span>
+                </div>
+
+                <p class="detail-description">
+                    Mẫu Real Grade (RG) tiếp theo mang đến sự cải tiến vượt bậc về biên độ khớp cử động và khung xương đúc sẵn. Epyon sở hữu khả năng biến hình linh hoạt sang dạng Mobile Armor, kèm theo bộ vũ khí kiếm nhiệt beam sword và khiên xích cực kỳ uy lực.
+                </p>
+
+                <!-- Thông số kỹ thuật nhanh -->
+                <div class="specs-box">
+                    <div class="spec-row"><span>Tỉ lệ:</span> <strong>1:144 (Cao khoảng 14cm khi hoàn thiện)</strong></div>
+                    <div class="spec-row"><span>Chất liệu:</span> <strong>Nhựa PS, ABS, PVC cao cấp</strong></div>
+                    <div class="spec-row"><span>Series phim:</span> <strong>Mobile Suit Gundam Wing (UC)</strong></div>
+                    <div class="spec-row"><span>Phụ kiện đi kèm:</span> <strong>Decal dán, Kiếm Beam, Khiên, Sách hướng dẫn</strong></div>
+                </div>
+
+                <!-- Bộ chọn số lượng & Nút mua hàng -->
+                <div class="purchase-action">
+                    <div class="quantity-selector">
+                        <button class="qty-btn">-</button>
+                        <input type="text" value="1" readonly>
+                        <button class="qty-btn">+</button>
+                    </div>
+                    <button class="btn-buy-now"><i class="bi bi-cart-plus-fill"></i> Thêm Vào Giỏ Hàng</button>
+                </div>
+
+                <!-- Cam kết dịch vụ -->
+                <div class="store-policy">
+                    <div><i class="bi bi-shield-check"></i> Cam kết hàng chính hãng 100% Bandai</div>
+                    <div><i class="bi bi-box-seam"></i> Đóng gói chống sốc 3 lớp bảo vệ hộp</div>
+                    <div><i class="bi bi-arrow-counterclockwise"></i> Hỗ trợ đổi trả nếu lỗi nhà sản xuất</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Phần mô tả chi tiết phía dưới & Đánh giá của cộng đồng -->
+        <section class="additional-info-section">
+            <div class="tab-header">
+                <button class="tab-btn active" data-tab="desc">Mô tả chi tiết sản phẩm</button>
+                <button class="tab-btn" data-tab="reviews">Đánh giá từ cộng đồng (3)</button>
+            </div>
+            
+            <!-- Nội dung Tab 1: Mô tả -->
+            <div class="tab-content" id="desc-content" style="display: block;">
+                <div class="tab-body">
+                    <p>Mô hình Gunpla dạng lắp ráp (Model Kit), người chơi sẽ tự cắt các chi tiết từ khung nhựa (runner) để lắp thành mô hình hoàn chỉnh. Sản phẩm sau khi hoàn thiện có thể cử động khớp linh hoạt, tạo dáng cực ngầu mà không cần dùng keo dán.</p>
+                    <p>Phù hợp cho người chơi từ 15 tuổi trở lên. Sản phẩm là món quà tuyệt vời cho những ai đam mê vũ trụ cơ khí mecha.</p>
+                </div>
+            </div>
+
+            <!-- Nội dung Tab 2: Đánh giá (Ban đầu ẩn đi) -->
+            <div class="tab-content" id="reviews-content" style="display: none;">
+                <div class="tab-body">
+                    <p><strong>Nguyễn Văn Thịnh:</strong> "Hàng đóng gói cẩn thận, hộp không bị cấn móp chút nào. Khớp ráp rất chắc tay, đáng tiền!"</p>
+                    <p><strong>Trần Thanh Bảo:</strong> "Shop giao hàng siêu tốc, mô hình đẹp miễn bàn, chuẩn hàng chính hãng Bandai."</p>
+                    <p><strong>Trần Nghĩa:</strong> "Sẽ tiếp tục ủng hộ shop ở các mẫu tiếp theo nhé!"</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <!-- Cột 1: Thương hiệu -->
+            <div class="footer-col">
+                <a href="Home.html" class="footer-logo">
+                    <img src="Logo.png" alt="Logo"> Figure & Friends
+                </a>
+                <p class="footer-desc">
+                    Trạm không gian giao lưu, chia sẻ kinh nghiệm và cung cấp mô hình chính hãng hàng đầu cho cộng đồng Mecha Việt Nam.
+                </p>
+                <div class="social-icons">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-discord"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Cột 2: Liên kết nhanh -->
+            <div class="footer-col">
+                <h3>Đường Dẫn Nhanh</h3>
+                <ul class="footer-links">
+                    <li><a href="Home.html"><i class="bi bi-chevron-right"></i> Trang chủ</a></li>
+                    <li><a href="Shop.html"><i class="bi bi-chevron-right"></i> Cửa hàng mô hình</a></li>
+                    <li><a href="Blog.html"><i class="bi bi-chevron-right"></i> Blog & Chợ Pass</a></li>
+                    <li><a href="Tutorial.html"><i class="bi bi-chevron-right"></i> Hướng dẫn nhập môn</a></li>
+                    <li><a href="AboutUs.html"><i class="bi bi-chevron-right"></i> Về chúng tôi</a></li>
+                </ul>
+            </div>
+
+            <!-- Cột 3: Chính sách & Hỗ trợ -->
+            <div class="footer-col">
+                <h3>Hỗ Trợ Khách Hàng</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="bi bi-chevron-right"></i> Chính sách bảo mật</a></li>
+                    <li><a href="#"><i class="bi bi-chevron-right"></i> Điều khoản dịch vụ chợ</a></li>
+                    <li><a href="#"><i class="bi bi-chevron-right"></i> Hướng dẫn check hàng chính hãng</a></li>
+                    <li><a href="#"><i class="bi bi-chevron-right"></i> Chính sách đổi trả & khiếu nại</a></li>
+                </ul>
+            </div>
+
+            <!-- Cột 4: Hotline & Liên hệ -->
+            <div class="footer-col">
+                <h3>Trạm Không Gian</h3>
+                <div class="footer-contact-item">
+                    <i class="bi bi-telephone-fill"></i>
+                    <div>
+                        <span>Hotline hỗ trợ 24/7:</span>
+                        <strong>098 554 4511</strong>
+                    </div>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <div>
+                        <span>Cơ sở chính:</span>
+                        <strong>124/24 Hoàng Hoa Thám, TP.HCM</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Dòng bản quyền phía dưới cùng -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Figure & Friends. Đồ án Web Programming & Applications. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

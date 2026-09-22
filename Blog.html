@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Figure & Friends</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Kiểm tra ngay lập tức trước khi trang được render
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.add('light-mode');
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div class="gundam-lineart-wrapper">
+        <img src="gundam-lineart.png" alt="Gundam Lineart" class="gundam-img">
+        <div class="scanning-light"></div>
+    </div>
+    <!-- Header & Nav -->
+    <header>
+        <div class="nav-container">
+            <a href="Home.html" class="logo">
+                <img src="Logo.png"></img> Figure & Friends
+            </a>
+
+            <div class="search-bar">
+                <i class="bi bi-search"></i>
+                <input type="text" placeholder="Tìm kiếm sản phẩm, nhà sản xuất,...">
+            </div>
+
+            <div class="nav-actions">
+                <!-- Nút chuyển đổi Sáng / Tối -->
+                <button id="theme-toggle" class="theme-btn" title="Chuyển đổi giao diện">
+                    <i class="bi bi-moon-stars-fill" id="theme-icon"></i>
+                </button>
+
+                <!-- Khu vực Tài khoản có Dropdown -->
+                <div class="account-dropdown">
+                    <a href="javascript:void(0);" id="account-btn" class="account-toggle">
+                        <i class="bi bi-person-circle"></i> <span id="account-text">Tài khoản</span> <i class="bi bi-chevron-down"></i>
+                    </a>
+                    
+                    <!-- Hộp menu thả xuống (Mặc định sẽ ẩn đi) -->
+                    <div class="dropdown-content" id="dropdown-box">
+                        <!-- TRƯỜNG HỢP 1: Chưa đăng nhập -->
+                        <div id="guest-menu">
+                            <a href="Login.html"><i class="bi bi-box-arrow-in-right"></i> Đăng nhập</a>
+                            <a href="Register.html"><i class="bi bi-person-plus"></i> Đăng ký</a>
+                        </div>
+                        
+                        <!-- TRƯỜNG HỢP 2: Đã đăng nhập -->
+                        <div id="user-menu" style="display: none;">
+                            <a href="profile.html"><i class="bi bi-person-badge"></i> Trang cá nhân</a>
+                            <a href="#" id="logout-btn"><i class="bi bi-box-arrow-right"></i> Đăng xuất</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#">
+                    <i class="bi bi-cart3"></i> Giỏ hàng
+                    <span class="badge"></span>
+                </a>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Menu -->
+    <section class="menu">
+        <div class="menu-banner">
+            <div class="selection">
+                <a href="Home.html" class="selection-item"><i class="bi bi-house-fill"></i>Home</a>
+                <a href="Shop.html" class="selection-item"><i class="bi bi-bag-fill"></i>Shop</a>
+                <a href="Blog.html" class="selection-item"><i class="bi bi-card-text"></i>Blog</a>
+                <a href="Tutorial.html" class="selection-item"><i class="bi bi-tools"></i>Tutorial</a>
+                <a href="AboutUs.html" class="selection-item"><i class="bi bi-person-fill"></i>About Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT: BLOG & CHỢ PASS ĐỒ -->
+    <main class="blog-wrapper">
+        
+        <!-- CỘT TRÁI / CHÍNH: Dòng thời gian bài viết (Feed) -->
+        <section class="blog-main-feed">
+            
+            <!-- Thanh tiêu đề & Nút đăng bài -->
+            <div class="blog-top-bar">
+                <div class="blog-title">
+                    <h2><i class="bi bi-chat-square-quote-fill"></i> BẢNG TIN & CHỢ CỘNG ĐỒNG</h2>
+                    <p>Chia sẻ kinh nghiệm sưu tầm và pass mô hình uy tín</p>
+                </div>
+                <button class="btn-create-post" onclick="alert('Mở form đăng bài viết / pass đồ!')">
+                    <i class="bi bi-plus-lg"></i> Đăng Bài Mới
+                </button>
+            </div>
+
+            <!-- Bộ lọc thể loại bài viết (Tags Filter) -->
+            <div class="blog-filters">
+                <button class="filter-chip active">Tất cả</button>
+                <button class="filter-chip">Kinh nghiệm lắp ráp</button>
+                <button class="filter-chip">Review Figure</button>
+                <button class="filter-chip pass-chip"><i class="bi bi-tag-fill"></i> Chợ Pass Đồ</button>
+            </div>
+
+            <!-- Danh sách các bài viết -->
+            <div class="blog-posts-list">
+                
+                <!-- BÀI VIẾT 1: Loại Pass Đồ (Thanh lý) -->
+                <article class="blog-card pass-item-card">
+                    <div class="post-header">
+                        <div class="author-info">
+                            <div class="author-avatar"><i class="bi bi-person-fill"></i></div>
+                            <div>
+                                <h4 class="author-name">Nguyễn Văn A</h4>
+                                <span class="post-time"><i class="bi bi-clock"></i> 2 giờ trước</span>
+                            </div>
+                        </div>
+                        <span class="badge-type badge-pass"><i class="bi bi-tag-fill"></i> PASS ĐỒ</span>
+                    </div>
+
+                    <div class="post-body">
+                        <h3>[Pass lại] Gundam Barbatos 1/100 Fullbox, đã sơn lót nhẹ</h3>
+                        <p class="post-snippet">Do chuẩn bị chuyển phòng nên mình cần pass lại em Barbatos này cho anh em đam mê. Hàng chính hãng Bandai, khớp cứng cáp, kèm đế dựng zin...</p>
+                        
+                        <!-- Hiển thị giá tiền nổi bật nếu là bài pass đồ -->
+                        <div class="pass-price-box">
+                            <span class="price-label">Giá pass:</span>
+                            <span class="price-value">650.000 đ</span>
+                        </div>
+                    </div>
+
+                    <div class="post-footer">
+                        <div class="post-stats">
+                            <span><i class="bi bi-heart"></i> 24</span>
+                            <span><i class="bi bi-chat"></i> 5 bình luận</span>
+                        </div>
+                        <a href="#" class="btn-detail">Xem chi tiết & Liên hệ</a>
+                    </div>
+                </article>
+
+                <!-- BÀI VIẾT 2: Loại Kinh nghiệm / Chia sẻ -->
+                <article class="blog-card">
+                    <div class="post-header">
+                        <div class="author-info">
+                            <div class="author-avatar"><i class="bi bi-person-badge"></i></div>
+                            <div>
+                                <h4 class="author-name">Trần Thanh Tâm</h4>
+                                <span class="post-time"><i class="bi bi-clock"></i> Hôm qua</span>
+                            </div>
+                        </div>
+                        <span class="badge-type badge-share"><i class="bi bi-lightbulb-fill"></i> KINH NGHIỆM</span>
+                    </div>
+
+                    <div class="post-body">
+                        <h3>Mẹo xử lý vết ngấn trắng (Stress mark) cực kỳ hiệu quả cho newbie</h3>
+                        <p class="post-snippet">Nhiều bạn mới chơi thường hay bị tình trạng cắt part xong bị vết trắng ở chân nhựa. Hôm nay mình xin chia sẻ cách dùng dao trổ và giấy nhám mịn để xóa sổ hoàn toàn vết này...</p>
+                    </div>
+
+                    <div class="post-footer">
+                        <div class="post-stats">
+                            <span><i class="bi bi-heart-fill" style="color: var(--primary);"></i> 89</span>
+                            <span><i class="bi bi-chat"></i> 14 bình luận</span>
+                        </div>
+                        <a href="#" class="btn-detail">Đọc bài viết</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- CỘT PHẢI: Sidebar phụ (Quy định chợ & Top tác giả) -->
+        <aside class="blog-sidebar">
+            <div class="sidebar-box">
+                <h3><i class="bi bi-shield-check"></i> NỘI QUY CHỢ PASS ĐỒ</h3>
+                <ul class="rules-list">
+                    <li>1. Đăng đúng giá, không nói thách.</li>
+                    <li>2. Phải có hình ảnh thực tế của sản phẩm kèm tên tài khoản xác thực.</li>
+                    <li>3. Admin không chịu trách nhiệm các giao dịch ngoài lề. Cẩn thận với lừa đảo!</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-box">
+                <h3><i class="bi bi-trophy-fill"></i> TOP THÀNH VIÊN TÍCH CỰC</h3>
+                <div class="top-member">
+                    <span class="rank-num">1</span>
+                    <div>
+                        <strong>Thanh Tâm (Frontend)</strong>
+                        <p>42 bài viết chia sẻ</p>
+                    </div>
+                </div>
+                <div class="top-member">
+                    <span class="rank-num">2</span>
+                    <div>
+                        <strong>Hữu Nam</strong>
+                        <p>28 bài pass thành công</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            
+            <!-- Cột 1: Thương hiệu -->
+            <div class="footer-col">
+                <a href="Home.html" class="footer-logo">
+                    <img src="Logo.png" alt="Logo"> Figure & Friends
+                </a>
+                <p class="footer-desc">
+                    Trạm không gian giao lưu, chia sẻ kinh nghiệm và cung cấp mô hình chính hãng hàng đầu cho cộng đồng Mecha Việt Nam.
+                </p>
+                <div class="social-icons">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-discord"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Cột 2: Liên kết nhanh -->
+            <div class="footer-col">
+                <h3>Đường Dẫn Nhanh</h3>
+                <ul class="footer-links">
+                    <li><a href="Home.html"><i class="bi bi-chevron-right"></i> Trang chủ</a></li>
+                    <li><a href="Shop.html"><i class="bi bi-chevron-right"></i> Cửa hàng mô hình</a></li>
+                    <li><a href="Blog.html"><i class="bi bi-chevron-right"></i> Blog & Chợ Pass</a></li>
+                    <li><a href="Tutorial.html"><i class="bi bi-chevron-right"></i> Hướng dẫn nhập môn</a></li>
+                    <li><a href="AboutUs.html"><i class="bi bi-chevron-right"></i> Về chúng tôi</a></li>
+                </ul>
+            </div>
+
+            <!-- Cột 3: Chính sách & Hỗ trợ -->
+            <div class="footer-col">
+                <h3>Hỗ Trợ Khách Hàng</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="bi bi-chevron-right"></i> Chính sách bảo mật</a></li>
+                    <li><a href="#"><i class="bi bi-chevron-right"></i> Điều khoản dịch vụ chợ</a></li>
+                    <li><a href="#"><i class="bi bi-chevron-right"></i> Hướng dẫn check hàng chính hãng</a></li>
+                    <li><a href="#"><i class="bi bi-chevron-right"></i> Chính sách đổi trả & khiếu nại</a></li>
+                </ul>
+            </div>
+
+            <!-- Cột 4: Hotline & Liên hệ -->
+            <div class="footer-col">
+                <h3>Trạm Không Gian</h3>
+                <div class="footer-contact-item">
+                    <i class="bi bi-telephone-fill"></i>
+                    <div>
+                        <span>Hotline hỗ trợ 24/7:</span>
+                        <strong>098 554 4511</strong>
+                    </div>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    <div>
+                        <span>Cơ sở chính:</span>
+                        <strong>124/24 Hoàng Hoa Thám, TP.HCM</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Dòng bản quyền phía dưới cùng -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 Figure & Friends. Đồ án Web Programming & Applications. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
